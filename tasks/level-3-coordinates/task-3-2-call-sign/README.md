@@ -8,9 +8,11 @@
 {"callsign":"NORTH-07"}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/3.2/input → i = task["input"]; answer = {"callsign": f"{i['name'].upper()}-{i['sector']:02d}"}
-# POST /api/submit: {"task_id":"3.2", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"3.2","completed":false,"input":{"name":"luna","sector":8}}
+```
+```json
+{"task_id":"3.2","answer":{"callsign":"LUNA-08"},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
