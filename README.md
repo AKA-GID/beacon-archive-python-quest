@@ -9,11 +9,16 @@
 сектора и каналы. Не подставляйте примеры из условия — вычисляйте ответ по
 объекту `input`, который получила ваша команда.
 
+Перед началом получите у преподавателя личный `participant_token`. Он нужен
+только для учебной статистики: сервер учитывает, какие задачи решил каждый
+участник, но не собирает имена или другие личные данные. Не передавайте свой
+токен другим командам.
+
 ## Как пройти задачу
 
 1. Получите вход: `GET /api/tasks/{task_id}/input`.
 2. Решите задачу на основе поля `input`.
-3. Отправьте JSON: `POST /api/submit` с `task_id` и `answer`.
+3. Отправьте JSON: `POST /api/submit` с `task_id`, `answer` и `participant_token`.
 4. Посмотрите общий прогресс: `GET /api/progress`.
 
 Сервер сравнивает JSON **точно**: учитываются имена полей, вложенность и типы.
@@ -41,6 +46,7 @@ from urllib.request import Request, urlopen
 
 BASE_URL = "http://АДРЕС_ПРЕПОДАВАТЕЛЯ:8765"
 TASK_ID = "1.1"
+PARTICIPANT_TOKEN = "ТОКЕН_ОТ_ПРЕПОДАВАТЕЛЯ"
 
 with urlopen(f"{BASE_URL}/api/tasks/{TASK_ID}/input") as response:
     task = json.load(response)
@@ -51,7 +57,11 @@ print("Уже решена командой:", task["completed"])
 # Соберите объект строго в формате условия задачи.
 answer = {"symbol": "а"}
 
-payload = json.dumps({"task_id": TASK_ID, "answer": answer}).encode("utf-8")
+payload = json.dumps({
+    "task_id": TASK_ID,
+    "answer": answer,
+    "participant_token": PARTICIPANT_TOKEN,
+}).encode("utf-8")
 request = Request(
     f"{BASE_URL}/api/submit",
     data=payload,
