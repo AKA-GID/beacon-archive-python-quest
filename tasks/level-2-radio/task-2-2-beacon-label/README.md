@@ -7,9 +7,11 @@
 {"label":"Тихий-Маяк"}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/2.2/input → answer = {"label": task["input"]["callsign"].title().replace(" ", "-")}
-# POST /api/submit: {"task_id":"2.2", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"2.2","completed":false,"input":{"callsign":"лунный порт"}}
+```
+```json
+{"task_id":"2.2","answer":{"label":"Лунный-Порт"},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
