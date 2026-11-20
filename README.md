@@ -38,40 +38,6 @@
 Адрес учебного сервера: `http://192.144.13.123:8766`. Не отправляйте в квест
 пароли, имена или другие личные данные.
 
-## Шаблон клиента
-
-```python
-import json
-from urllib.request import Request, urlopen
-
-BASE_URL = "http://АДРЕС_ПРЕПОДАВАТЕЛЯ:8765"
-TASK_ID = "1.1"
-PARTICIPANT_TOKEN = "ТОКЕН_ОТ_ПРЕПОДАВАТЕЛЯ"
-
-with urlopen(f"{BASE_URL}/api/tasks/{TASK_ID}/input") as response:
-    task = json.load(response)
-
-print(task["input"])
-print("Уже решена командой:", task["completed"])
-
-# Соберите объект строго в формате условия задачи.
-answer = {"symbol": "а"}
-
-payload = json.dumps({
-    "task_id": TASK_ID,
-    "answer": answer,
-    "participant_token": PARTICIPANT_TOKEN,
-}).encode("utf-8")
-request = Request(
-    f"{BASE_URL}/api/submit",
-    data=payload,
-    headers={"Content-Type": "application/json"},
-    method="POST",
-)
-with urlopen(request) as response:
-    print(json.load(response))
-```
-
 ## Уровни
 
 Перед началом откройте [шаблон GET/POST](tasks/README.md).
