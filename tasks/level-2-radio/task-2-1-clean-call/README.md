@@ -7,9 +7,12 @@
 {"clean":"север-7"}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/2.1/input → answer = {"clean": task["input"]["phrase"].strip().lower()}
-# POST /api/submit: {"task_id":"2.1", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"2.1","completed":false,"input":{"phrase":"  ЛУНА-3  "}}
+```
+
+```json
+{"task_id":"2.1","answer":{"clean":"луна-3"},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
