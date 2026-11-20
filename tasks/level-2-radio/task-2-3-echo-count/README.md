@@ -8,9 +8,11 @@
 {"count":3}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/2.3/input → answer = {"count": task["input"]["signal"].lower().count(task["input"]["symbol"])}
-# POST /api/submit: {"task_id":"2.3", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"2.3","completed":false,"input":{"signal":"Радар радар РАДАР","symbol":"р"}}
+```
+```json
+{"task_id":"2.3","answer":{"count":3},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
