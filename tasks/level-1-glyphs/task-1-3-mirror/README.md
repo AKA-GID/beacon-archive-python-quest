@@ -6,9 +6,12 @@
 {"reflection":"кяам"}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/1.3/input → answer = {"reflection": task["input"]["word"][::-1]}
-# POST /api/submit: {"task_id":"1.3", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"1.3","completed":false,"input":{"word":"контур"}}
+```
+
+```json
+{"task_id":"1.3","answer":{"reflection":"рутнок"},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
