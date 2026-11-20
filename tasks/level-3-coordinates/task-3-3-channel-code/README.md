@@ -7,9 +7,11 @@
 {"code":"прдтчк"}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/3.3/input → i = task["input"]; answer = {"code": i["word"][::i["step"]]}
-# POST /api/submit: {"task_id":"3.3", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"3.3","completed":false,"input":{"word":"координата","step":2}}
+```
+```json
+{"task_id":"3.3","answer":{"code":"корант"},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
