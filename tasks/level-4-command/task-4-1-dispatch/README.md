@@ -12,10 +12,11 @@ TO:{callsign} | sector={sector:02d} | channel={channel} | priority={priority.upp
 {"packet":"TO:NORTH-07 | sector=03 | channel=18 | priority=HIGH"}
 ```
 
-## Шаблон GET и POST
+## JSON API
 
-```python
-# GET /api/tasks/4.1/input → i = task["input"]
-# answer = {"packet": f"TO:{i['callsign']} | sector={i['sector']:02d} | channel={i['channel']} | priority={i['priority'].upper()}"}
-# POST /api/submit: {"task_id":"4.1", "answer":answer, "participant_token":"ТОКЕН"}
+```json
+{"task_id":"4.1","completed":false,"input":{"callsign":"LUNA-12","sector":4,"channel":55,"priority":"normal"}}
+```
+```json
+{"task_id":"4.1","answer":{"packet":"TO:LUNA-12 | sector=04 | channel=55 | priority=NORMAL"},"participant_token":"MAK-ВАШ_ТОКЕН"}
 ```
